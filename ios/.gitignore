@@ -32,3 +32,8 @@ Runner/GeneratedPluginRegistrant.*
 !default.mode2v3
 !default.pbxuser
 !default.perspectivev3
+# Xcode project files
+project.pbxproj
+contents.xcworkspacedata
+*.xcodeproj/project.pbxproj
+*.xcworkspace/contents.xcworkspacedata

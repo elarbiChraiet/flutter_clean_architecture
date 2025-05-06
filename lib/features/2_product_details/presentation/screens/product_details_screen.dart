@@ -37,17 +37,14 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         ],
       ),
       body: BlocBuilder<ProductCubit, ProductState>(
-        builder: (context, state) {
-          debugPrint('state: $state');
-
-          return switch (state) {
-            ProductInitialState() => const Center(child: Text('Initializing...')),
-            ProductLoadingState() => const Center(child: CircularProgressIndicator()),
-            ProductErrorState(errorMessage: final message) => Center(child: Text('Error: $message')),
-            ProductEmptyState() => const Center(child: Text('No product found!')),
-            ProductLoadedState(product: final product) => ProductDetailView(product: product),
-          };
-        },
+        builder:
+            (context, state) => switch (state) {
+              ProductInitialState() => const Center(child: Text('Initializing...')),
+              ProductLoadingState() => const Center(child: CircularProgressIndicator()),
+              ProductErrorState(errorMessage: final message) => Center(child: Text('Error: $message')),
+              ProductEmptyState() => const Center(child: Text('No product found!')),
+              ProductLoadedState(product: final product) => ProductDetailView(product: product),
+            },
       ),
     );
   }

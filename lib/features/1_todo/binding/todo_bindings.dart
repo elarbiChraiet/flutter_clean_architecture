@@ -1,3 +1,5 @@
+import 'package:jch_requester/generic_requester.dart' show Debugger;
+
 import '../../../main.dart';
 import '../data/datasource/local/todo_local_datasource.dart';
 import '../data/datasource/remote/todo_remote_datasource.dart';
@@ -38,6 +40,6 @@ void injectTodosBindings() {
     }
     sl.registerFactory(() => TodoBloc(getTodosUC: sl(), deleteTodoUC: sl()));
   } catch (e) {
-    print('Error in todo bindings: $e');
+    Debugger.red('Error in todo bindings: $e');
   }
 }

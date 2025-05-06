@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:jch_requester/generic_requester.dart' show Debugger;
 
 import '../../../main.dart';
 import '../data/datasource/local/product_local_datasource.dart';
@@ -35,6 +35,6 @@ void injectProductBindings() {
     }
     sl.registerFactory(() => ProductCubit(getProductUC: sl()));
   } catch (e) {
-    debugPrint('Error in product bindings: $e');
+    Debugger.red('Error in product bindings: $e');
   }
 }

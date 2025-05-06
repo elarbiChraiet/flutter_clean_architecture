@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jch_requester/generic_requester.dart' show Debugger;
 
 import '../core/router/app_router.dart';
 
@@ -27,7 +28,7 @@ class AppWidgetState extends State<AppWidget> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    print('AppLifecycleState: $state');
+    Debugger.magenta('AppLifecycleState: $state');
     appState.value = state;
   }
 

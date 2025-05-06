@@ -45,31 +45,29 @@ class _TodoScreenState extends State<TodoScreen> {
         children: [
           ValueListenableBuilder(
             valueListenable: AppWidgetState.appState,
-            builder: (_, value, __) => Text('${value}', style: const TextStyle(fontSize: 20)),
+            builder: (_, value, __) => Text('$value', style: const TextStyle(fontSize: 20)),
           ),
           VerticalSpacing(20),
           Expanded(
             child: BlocBuilder<TodoBloc, TodoState>(
-              builder: (context, state) {
-                debugPrint('state: $state');
-                return switch (state) {
-                  TodoInitialState() => const Center(child: Text('Initializing...')),
-                  TodoLoadingState() => const Center(child: CircularProgressIndicator()),
-                  TodoErrorState(errorMessage: final message) => Center(child: Text('Error: $message')),
-                  TodoLoadedState(todos: final todos) =>
-                    todos.isEmpty
-                        ? const Center(child: Text('No todos yet!'))
-                        : TodoList(
-                          todos: todos,
-                          onToggleCompletion: (id) {
-                            context.read<TodoBloc>().add(ToggleTodoEvent(id));
-                          },
-                          onDelete: (id) {
-                            context.read<TodoBloc>().add(DeleteTodoEvent(id));
-                          },
-                        ),
-                };
-              },
+              builder:
+                  (context, state) => switch (state) {
+                    TodoInitialState() => const Center(child: Text('Initializing...')),
+                    TodoLoadingState() => const Center(child: CircularProgressIndicator()),
+                    TodoErrorState(errorMessage: final message) => Center(child: Text('Error: $message')),
+                    TodoLoadedState(todos: final todos) =>
+                      todos.isEmpty
+                          ? const Center(child: Text('No todos yet!'))
+                          : TodoList(
+                            todos: todos,
+                            onToggleCompletion: (id) {
+                              context.read<TodoBloc>().add(ToggleTodoEvent(id));
+                            },
+                            onDelete: (id) {
+                              context.read<TodoBloc>().add(DeleteTodoEvent(id));
+                            },
+                          ),
+                  },
             ),
           ),
         ],
