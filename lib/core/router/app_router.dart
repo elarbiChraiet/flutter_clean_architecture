@@ -6,7 +6,7 @@ import '../../features/1_todo/binding/todo_bindings.dart';
 import '../../features/1_todo/presentation/bloc/todo_bloc.dart';
 import '../../features/1_todo/presentation/screens/todo_screen.dart';
 import '../../features/2_product_details/binding/product_bindings.dart';
-import '../../features/2_product_details/presentation/bloc/product_bloc.dart';
+import '../../features/2_product_details/presentation/cubit/product_cubit.dart';
 import '../../features/2_product_details/presentation/screens/product_details_screen.dart';
 import '../../main.dart';
 
@@ -36,10 +36,10 @@ final router = GoRouter(
         // Get the product ID from the route parameters
         final productId = state.pathParameters['id'] ?? '1';
 
-        return BlocProvider<ProductBloc>(
+        return BlocProvider<ProductCubit>(
           create: (_) {
             injectProductBindings();
-            return sl<ProductBloc>();
+            return sl<ProductCubit>();
           },
           child: ProductDetailsScreen(productId: int.parse(productId)),
         );

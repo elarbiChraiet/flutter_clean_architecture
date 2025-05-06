@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/product_bloc.dart';
-import '../bloc/product_event.dart';
-import '../bloc/product_state.dart';
+import '../cubit/product_cubit.dart';
+import '../cubit/product_state.dart';
 import '../widgets/product_detail_view.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
@@ -19,7 +18,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<ProductBloc>().add(LoadProductEvent(widget.productId));
+    context.read<ProductCubit>().loadProduct(widget.productId);
   }
 
   @override
@@ -32,12 +31,12 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           IconButton(
             icon: const Icon(Icons.refresh),
             onPressed: () {
-              context.read<ProductBloc>().add(RefreshProductEvent(widget.productId));
+              context.read<ProductCubit>().refreshProduct(widget.productId);
             },
           ),
         ],
       ),
-      body: BlocBuilder<ProductBloc, ProductState>(
+      body: BlocBuilder<ProductCubit, ProductState>(
         builder: (context, state) {
           debugPrint('state: $state');
 

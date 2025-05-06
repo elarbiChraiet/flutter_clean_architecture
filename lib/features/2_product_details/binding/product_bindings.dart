@@ -1,10 +1,12 @@
+import 'package:flutter/foundation.dart';
+
 import '../../../main.dart';
 import '../data/datasource/local/product_local_datasource.dart';
 import '../data/datasource/remote/product_remote_datasource.dart';
 import '../data/repositories/product_repository_impl.dart';
 import '../domain/repositories/product_repository.dart';
 import '../domain/usecases/get_product_uc.dart';
-import '../presentation/bloc/product_bloc.dart';
+import '../presentation/cubit/product_cubit.dart';
 
 void injectProductBindings() {
   try {
@@ -27,12 +29,12 @@ void injectProductBindings() {
       sl.registerLazySingleton<ProductLocalDataSource>(() => ProductLocalDataSourceImpl());
     }
 
-    // For BLoC, unregister if exists and register again (factory always creates new instance)
-    if (sl.isRegistered<ProductBloc>()) {
-      sl.unregister<ProductBloc>();
+    // For Cubit, unregister if exists and register again (factory always creates new instance)
+    if (sl.isRegistered<ProductCubit>()) {
+      sl.unregister<ProductCubit>();
     }
-    sl.registerFactory(() => ProductBloc(getProductUC: sl()));
+    sl.registerFactory(() => ProductCubit(getProductUC: sl()));
   } catch (e) {
-    print('Error in product bindings: $e');
+    debugPrint('Error in product bindings: $e');
   }
 }
