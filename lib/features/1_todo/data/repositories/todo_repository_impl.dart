@@ -53,7 +53,7 @@ class TodoRepositoryImpl implements TodoRepository {
     try {
       final todoResult = await remoteDataSource.deleteTodo(id);
 
-      if (todoResult == null || todoResult.success == false) return const Right(false);
+      if (todoResult == null || todoResult.id == null) return const Right(false);
 
       // Also remove from local cache
       await localDataSource.removeTodo(id);

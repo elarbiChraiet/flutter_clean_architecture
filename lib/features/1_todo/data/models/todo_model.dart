@@ -14,13 +14,16 @@ class TodosListModel extends ModelingProtocol {
   List<Object?> get props => [todos];
 }
 
-class TodoModel {
+class TodoModel extends ModelingProtocol {
   final int? id;
   final String? title;
   final bool? isCompleted;
   final int? userId;
 
   TodoModel({this.id, this.title, this.isCompleted, this.userId});
+
+  @override
+  fromJson(json) => TodoModel.fromJson(json);
 
   factory TodoModel.fromJson(json) => TodoModel(
     id: json['id'] as int?,
@@ -30,4 +33,7 @@ class TodoModel {
   );
 
   Map<String, dynamic> toJson() => {'id': id, 'title': title, 'isCompleted': isCompleted, 'userId': userId};
+
+  @override
+  List<Object?> get props => [];
 }

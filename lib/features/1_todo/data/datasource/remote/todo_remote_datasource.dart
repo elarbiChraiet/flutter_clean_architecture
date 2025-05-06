@@ -5,7 +5,7 @@ import '../../models/todo_model.dart';
 
 abstract class TodoRemoteDataSource {
   Future<TodosListModel?> getTodos();
-  Future<PatchingModel?> deleteTodo(int id);
+  Future<TodoModel?> deleteTodo(int id);
 }
 
 class TodoRemoteDataSourceImpl implements TodoRemoteDataSource {
@@ -28,13 +28,13 @@ class TodoRemoteDataSourceImpl implements TodoRemoteDataSource {
   }
 
   @override
-  Future<PatchingModel?> deleteTodo(int id) async {
+  Future<TodoModel?> deleteTodo(int id) async {
     try {
       return (await _apiClient.performDecodingRequest(
         debugIt: true,
         method: RestfulMethods.delete,
         path: 'todos/$id',
-        decodableModel: PatchingModel(),
+        decodableModel: TodoModel(),
       ));
     } catch (error) {
       throw ServerException(error);
