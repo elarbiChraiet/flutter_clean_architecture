@@ -16,6 +16,9 @@ Cette application est structurée selon les principes de Clean Architecture avec
 - Architecture scalable et testable
 - Séparation des préoccupations
 - Gestion d'état réactive
+- Surveillance du cycle de vie de l'application (WidgetsBindingObserver)
+- Surveillance de la connectivité en temps réel
+- Intercepteur de requêtes HTTP avec affichage de logs détaillés
 
 ## Technologies
 
@@ -126,6 +129,48 @@ BlocBuilder<TodoBloc, TodoState>(
 )
 ```
 
+## App Lifecycle Monitoring
+
+The application implements the `WidgetsBindingObserver` to monitor the app's lifecycle states:
+
+- **AppLifecycleState.resumed**: App is visible and responding to user input
+- **AppLifecycleState.inactive**: App is not currently responding to user input
+- **AppLifecycleState.paused**: App is not visible to the user
+- **AppLifecycleState.detached**: App is in a suspended state
+
+This allows the app to:
+- Pause/resume network operations when the app enters/exits the background
+- Save critical data when the app is about to be terminated
+- Refresh data when the app returns to the foreground
+
+## Connectivity Monitoring
+
+The app continuously monitors network connectivity status using the connectivity package:
+
+- Detects when the device connects to or disconnects from the internet
+- Adapts UI based on current connectivity status
+- Automatically switches between remote and local data sources based on connectivity
+- Queues operations when offline for later execution when connection is restored
+
+## Request Interceptor
+
+A custom HTTP request interceptor is implemented to enhance debugging and monitoring:
+
+- Detailed logging of request/response lifecycle with color-coded console output
+- Request timing and performance metrics
+- Automatic retry mechanism for failed requests
+- Request headers and body visualization
+- Response status code highlighting and error handling
+- Support for mock responses during development
+
+Example debug output:
+```
+→ REQUEST GET https://api.example.com/todos
+→ Headers: {Authorization: Bearer xyz123, Content-Type: application/json}
+← RESPONSE [200] (324ms) 
+← Body: [{"id": 1, "title": "Complete task", "completed": false}, ...]
+```
+
 ## When to Use Each
 
 ### Use Cubit when:
@@ -219,3 +264,44 @@ BlocBuilder<TodoBloc, TodoState>(
   },
 )
 ```
+
+
+## License & Contact
+
+**Jewel Cheriaa**
+- Email: elarbi.chraiet@gmail.com
+- LinkedIn: [Elarbi Chraiet](https://www.linkedin.com/in/chraiet-elarbi-606b92138/)
+- Mobile (WhatsApp): +33 7 66 06 31 26
+
+For more information about my Flutter expertise, check out my [Generic Requester](https://github.com/Jewelch/generic_requester) project.
+
+## 6. Developer Profile
+
+### Introduction
+Senior Flutter and Android Developer (FRANCE) 
+9 years of experience | 20+ applications created 
+
+### Technical Expertise
+Passionate and results-driven with a strong track record of creating high-quality applications. Expert in:
+- Generic programming
+- Clean Architecture
+- State Management Patterns (BLoC, Riverpod, Provider, Getx, Mobx, Modular)
+- Jetpack compose and XML Layout, Dagger 2, Hilt, Couroutines, MVVM, Koin, Retrofit  (Android)
+- Automation and testing (Unit, UI, Integration, E2E)
+- Performance optimization
+- Code maintainability
+- Complex system integration
+
+### Notable Flutter Applications
+* My Swiss Keeper (Swisse) - [App Store](https://apps.apple.com/fr/app/my-swiss-keeper/id1617620449)
+* IRP AUTO Santé (FRANCE) (+100K users) - [App Store](https://apps.apple.com/fr/app/irp-auto-sant%C3%A9/id948623366?l=en) | 
+* TLFnet (+2K users) - [Play Store](https://play.google.com/store/apps/details?id=com.tlfnet)
+
+### Notable Android Applications
+* Halal App (KSA) - [App Store](https://apps.apple.com/us/app/halal-app-%D8%AD%D9%84%D8%A7%D9%84/id1570293278)
+
+### Leadership and Expertise
+In addition to my technical expertise, I bring strong leadership and teamwork capabilities, having held key positions in several organizations:
+- GRDF (FRANCE) - Senior Android developer
+- Be-ys Software (France) - Flutter Tech Lead
+- WiMobi (Tunisia) - Android Tech Lead
