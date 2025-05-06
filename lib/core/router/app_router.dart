@@ -5,6 +5,9 @@ import 'package:go_router/go_router.dart';
 import '../../features/1_todo/binding/todo_bindings.dart';
 import '../../features/1_todo/presentation/bloc/todo_bloc.dart';
 import '../../features/1_todo/presentation/screens/todo_screen.dart';
+import '../../features/2_product_details/binding/product_bindings.dart';
+import '../../features/2_product_details/presentation/bloc/product_bloc.dart';
+import '../../features/2_product_details/presentation/screens/product_details_screen.dart';
 import '../../main.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
@@ -26,6 +29,21 @@ final router = GoRouter(
             child: const TodoScreen(),
           ),
     ),
-    // GoRoute(path: '/product/:id', name: 'product'),
+    GoRoute(
+      path: '/product/:id',
+      name: 'product',
+      builder: (context, state) {
+        // Get the product ID from the route parameters
+        final productId = state.pathParameters['id'] ?? '1';
+
+        return BlocProvider<ProductBloc>(
+          create: (_) {
+            injectProductBindings();
+            return sl<ProductBloc>();
+          },
+          child: ProductDetailsScreen(productId: int.parse(productId)),
+        );
+      },
+    ),
   ],
 );
