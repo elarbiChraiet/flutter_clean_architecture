@@ -26,3 +26,9 @@ doc/api/
 .flutter-plugins
 .flutter-plugins-dependencies
 pubspec.lock
+
+# Xcode project files
+**/project.pbxproj
+**/contents.xcworkspacedata
+**/*.xcodeproj/project.pbxproj
+**/*.xcworkspace/contents.xcworkspacedata
