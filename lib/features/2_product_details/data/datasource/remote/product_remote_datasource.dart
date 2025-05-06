@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:jch_requester/generic_requester.dart';
+import 'package:generic_requester/generic_requester.dart';
 
 import '../../../../../core/error/exceptions.dart';
 import '../../models/product_model.dart';

@@ -1,4 +1,4 @@
-import 'package:jch_requester/generic_requester.dart' show Either;
+import 'package:generic_requester/generic_requester.dart' show Either;
 
 import '../../../../core/error/failures.dart';
 import '../entities/todo_entity.dart';

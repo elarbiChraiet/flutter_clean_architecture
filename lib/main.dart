@@ -1,7 +1,7 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:generic_requester/generic_requester.dart';
 import 'package:get_it/get_it.dart';
-import 'package:jch_requester/generic_requester.dart';
 
 import 'app/app_widget.dart';
 import 'app/environment/app_environments.dart';

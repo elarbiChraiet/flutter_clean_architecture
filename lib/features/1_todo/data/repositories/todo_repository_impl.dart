@@ -1,4 +1,4 @@
-import 'package:jch_requester/generic_requester.dart';
+import 'package:generic_requester/generic_requester.dart';
 
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/error/failures.dart';

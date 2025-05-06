@@ -1,4 +1,4 @@
-import 'package:jch_requester/generic_requester.dart' show Debugger;
+import 'package:generic_requester/generic_requester.dart' show Debugger;
 
 import '../../../main.dart';
 import '../data/datasource/local/todo_local_datasource.dart';

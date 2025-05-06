@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:jch_requester/generic_requester.dart' show Debugger;
+import 'package:generic_requester/generic_requester.dart' show Debugger;
 
 class ConnecetivityManager {
   final Connectivity connectivity;

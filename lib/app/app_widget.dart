@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jch_requester/generic_requester.dart' show Debugger;
+import 'package:generic_requester/generic_requester.dart' show Debugger;
 
 import '../core/router/app_router.dart';
 
