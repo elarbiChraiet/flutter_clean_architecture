@@ -268,7 +268,7 @@ BlocBuilder<TodoBloc, TodoState>(
 
 ## License & Contact
 
-**Jewel Cheriaa**
+**Elarbi Chraiet**
 - Email: elarbi.chraiet@gmail.com
 - LinkedIn: [Elarbi Chraiet](https://www.linkedin.com/in/chraiet-elarbi-606b92138/)
 - Mobile (WhatsApp): +33 7 66 06 31 26

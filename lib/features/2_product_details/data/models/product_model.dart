@@ -55,19 +55,4 @@ class ProductModel extends ModelingProtocol {
     'thumbnail': thumbnail,
     'images': images,
   };
-
-  @override
-  List<Object?> get props => [
-    id,
-    title,
-    description,
-    price,
-    discountPercentage,
-    rating,
-    stock,
-    brand,
-    category,
-    thumbnail,
-    images,
-  ];
 }

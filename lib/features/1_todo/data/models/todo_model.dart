@@ -9,9 +9,6 @@ class TodosListModel extends ModelingProtocol {
   fromJson(json) => TodosListModel(todos: (json['todos'] as List).map((e) => TodoModel.fromJson(e)).toList());
 
   toJson() => {'todos': todos?.map((e) => e.toJson()).toList()};
-
-  @override
-  List<Object?> get props => [todos];
 }
 
 class TodoModel extends ModelingProtocol {
@@ -33,7 +30,4 @@ class TodoModel extends ModelingProtocol {
   );
 
   Map<String, dynamic> toJson() => {'id': id, 'title': title, 'isCompleted': isCompleted, 'userId': userId};
-
-  @override
-  List<Object?> get props => [];
 }
